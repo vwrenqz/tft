@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate Bearing Capacity Factors</title>
+</head>
+<body>
+    <h1>Calculate Bearing Capacity Factors</h1>
+    <form action="/calculate" method="POST">
+        <label for="angle_phi">Angle of Friction (φ):</label>
+        <input type="number" id="angle_phi" name="angle_phi" required>
+        <br>
+        <label for="method">Preferred Method:</label>
+        <select id="method" name="method" required>
+            <option value="terzaghi">Terzaghi</option>
+	    <option value="meyerhof">Meyerhof</option>
+            <option value="vesic">Vesic</option>
+	    <option value="hansen">Hansen</option>
+	    <option value="EC7">Eurocode 7</option>
+            <!-- Add other methods as needed -->
+        </select>
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+    <a href="/">Back to Home</a>
+    {% if results %}
+        <h2>Results</h2>
+        <p>Nc: {{ results.Nc }}</p>
+        <p>Nq: {{ results.Nq }}</p>
+        <p>Nγ: {{ results.Ngamma }}</p>
+    {% endif %}
+</body>
+</html>
